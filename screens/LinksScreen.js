@@ -1,53 +1,23 @@
-import { Ionicons } from '@expo/vector-icons';
 import * as WebBrowser from 'expo-web-browser';
 import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { RectButton, ScrollView } from 'react-native-gesture-handler';
+import { StyleSheet, Text, View, Image } from 'react-native';
+
+import color from './../config/color';
 
 export default function LinksScreen() {
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-      <OptionButton
-        icon="md-school"
-        label="Read the Expo documentation"
-        onPress={() => WebBrowser.openBrowserAsync('https://docs.expo.io')}
-      />
-
-      <OptionButton
-        icon="md-compass"
-        label="Read the React Navigation documentation"
-        onPress={() => WebBrowser.openBrowserAsync('https://reactnavigation.org')}
-      />
-
-      <OptionButton
-        icon="ios-chatboxes"
-        label="Ask a question on the forums"
-        onPress={() => WebBrowser.openBrowserAsync('https://forums.expo.io')}
-        isLastOption
-      />
-    </ScrollView>
-  );
-}
-
-function OptionButton({ icon, label, onPress, isLastOption }) {
-  return (
-    <RectButton style={[styles.option, isLastOption && styles.lastOption]} onPress={onPress}>
-      <View style={{ flexDirection: 'row' }}>
-        <View style={styles.optionIconContainer}>
-          <Ionicons name={icon} size={22} color="rgba(0,0,0,0.35)" />
-        </View>
-        <View style={styles.optionTextContainer}>
-          <Text style={styles.optionText}>{label}</Text>
-        </View>
-      </View>
-    </RectButton>
+    <View style={styles.container}>
+      <View style={styles.closeIcon}></View>
+      <View style={styles.openIcon}></View>
+      <Image style={styles.image} resizeMode="contain" source={require('./../assets/images/chair.jpg')}></Image>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fafafa',
+    backgroundColor: '#000',
   },
   contentContainer: {
     paddingTop: 15,
@@ -71,4 +41,24 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     marginTop: 1,
   },
+  image: {
+    width: '100%',
+    height: '100%'
+  },
+  closeIcon: {
+    backgroundColor: color.primary,
+    width: 50,
+    height: 50,
+    position: 'absolute',
+    top: 20,
+    left: 30
+  },
+  openIcon: {
+    backgroundColor: color.secondary,
+    width: 50,
+    height: 50,
+    position: 'absolute',
+    top: 20,
+    right: 30
+  }
 });

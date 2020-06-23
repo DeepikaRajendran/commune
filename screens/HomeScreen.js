@@ -1,97 +1,119 @@
-import * as WebBrowser from 'expo-web-browser';
 import * as React from 'react';
-import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, SafeAreaView, ImageBackground } from 'react-native';
 
-import { MonoText } from '../components/StyledText';
+
+import color from './../config/color';
 
 export default function HomeScreen() {
   return (
-    <View style={styles.container}>
-      <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-        <View style={styles.welcomeContainer}>
-          <Image
-            source={
-              __DEV__
-                ? require('../assets/images/robot-dev.png')
-                : require('../assets/images/robot-prod.png')
-            }
-            style={styles.welcomeImage}
-          />
-        </View>
 
-        <View style={styles.getStartedContainer}>
-          <DevelopmentModeNotice />
 
-          <Text style={styles.getStartedText}>Open up the code for this screen:</Text>
+    <ImageBackground style={styles.background} source={require('./../assets/images/background.jpg')} >
 
-          <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-            <MonoText>screens/HomeScreen.js</MonoText>
-          </View>
-
-          <Text style={styles.getStartedText}>
-            Change any of the text, save the file, and your app will automatically reload.
-          </Text>
-        </View>
-
-        <View style={styles.helpContainer}>
-          <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-            <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
-
-      <View style={styles.tabBarInfoContainer}>
-        <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
-
-        <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-          <MonoText style={styles.codeHighlightText}>navigation/BottomTabNavigator.js</MonoText>
-        </View>
+      <View style={styles.logoContainer}>
+        <Image style={styles.image} source={require('./../assets/images/logo-red.png')}></Image>
+        <Text >Sell what you don't need</Text>
       </View>
-    </View>
+
+      <View style={{
+        backgroundColor: color.primary,
+        width: "100%",
+        height: 70
+      }}></View>
+      <View style={{
+        backgroundColor: color.secondary,
+        width: "100%",
+        height: 70
+      }}></View>
+    </ImageBackground>
+
+
+    // <View style={styles.container}>
+    //   <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+    //     <View style={styles.welcomeContainer}>
+    //       <Image
+    //         source={
+    //           __DEV__
+    //             ? require('../assets/images/robot-dev.png')
+    //             : require('../assets/images/robot-prod.png')
+    //         }
+    //         style={styles.welcomeImage}
+    //       />
+    //     </View>
+
+    //     <View style={styles.getStartedContainer}>
+    //       <DevelopmentModeNotice />
+
+    //       <Text style={styles.getStartedText}>Open up the code for this screen:</Text>
+
+    //       <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
+    //         <MonoText>screens/HomeScreen.js</MonoText>
+    //       </View>
+
+    //       <Text style={styles.getStartedText}>
+    //         Change any of the text, save the file, and your app will automatically reload.
+    //       </Text>
+    //     </View>
+
+    //     <View style={styles.helpContainer}>
+    //       <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
+    //         <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
+    //       </TouchableOpacity>
+    //     </View>
+    //   </ScrollView>
+
+    //   <View style={styles.tabBarInfoContainer}>
+    //     <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
+
+    //     <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
+    //       <MonoText style={styles.codeHighlightText}>navigation/BottomTabNavigator.js</MonoText>
+    //     </View>
+    //   </View>
+    // </View>
   );
 }
 
-HomeScreen.navigationOptions = {
-  header: null,
-};
+// HomeScreen.navigationOptions = {
+//   header: null,
+// };
 
-function DevelopmentModeNotice() {
-  if (__DEV__) {
-    const learnMoreButton = (
-      <Text onPress={handleLearnMorePress} style={styles.helpLinkText}>
-        Learn more
-      </Text>
-    );
+// function DevelopmentModeNotice() {
+//   if (__DEV__) {
+//     const learnMoreButton = (
+//       <Text onPress={handleLearnMorePress} style={styles.helpLinkText}>
+//         Learn more
+//       </Text>
+//     );
 
-    return (
-      <Text style={styles.developmentModeText}>
-        Development mode is enabled: your app will be slower but you can use useful development
-        tools. {learnMoreButton}
-      </Text>
-    );
-  } else {
-    return (
-      <Text style={styles.developmentModeText}>
-        You are not in development mode: your app will run at full speed.
-      </Text>
-    );
-  }
-}
+//     return (
+//       <Text style={styles.developmentModeText}>
+//         Development mode is enabled: your app will be slower but you can use useful development
+//         tools. {learnMoreButton}
+//       </Text>
+//     );
+//   } else {
+//     return (
+//       <Text style={styles.developmentModeText}>
+//         You are not in development mode: your app will run at full speed.
+//       </Text>
+//     );
+//   }
+// }
 
-function handleLearnMorePress() {
-  WebBrowser.openBrowserAsync('https://docs.expo.io/versions/latest/workflow/development-mode/');
-}
+// function handleLearnMorePress() {
+//   WebBrowser.openBrowserAsync('https://docs.expo.io/versions/latest/workflow/development-mode/');
+// }
 
-function handleHelpPress() {
-  WebBrowser.openBrowserAsync(
-    'https://docs.expo.io/versions/latest/get-started/create-a-new-app/#making-your-first-change'
-  );
-}
+// function handleHelpPress() {
+//   WebBrowser.openBrowserAsync(
+//     'https://docs.expo.io/versions/latest/get-started/create-a-new-app/#making-your-first-change'
+//   );
+// }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'column',
     backgroundColor: '#fff',
   },
   developmentModeText: {
@@ -109,12 +131,19 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 20,
   },
-  welcomeImage: {
+  background: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center'
+  },
+  logoContainer: {
+    position: 'absolute',
+    top: 50,
+    alignItems: 'center'
+  },
+  image: {
     width: 100,
-    height: 80,
-    resizeMode: 'contain',
-    marginTop: 3,
-    marginLeft: -10,
+    height: 100,
   },
   getStartedContainer: {
     alignItems: 'center',
